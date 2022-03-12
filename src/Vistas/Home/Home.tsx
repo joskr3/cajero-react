@@ -2,9 +2,14 @@ import './styles.scss';
 import { useState } from 'react';
 import { IUser } from '../../Interfaces/IUser';
 import { arrayUsuarios } from '../../db';
+import { useNavigate } from "react-router-dom";
+
+
 
 
 function Home() {
+
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -56,11 +61,22 @@ function Home() {
         return userFound
     }
 
+
+    function irAlCajero() {
+        navigate("/login");
+    }
+
     return (
         <>
 
-            <div id="alerta"></div>
-            {(currentUser === null) ? (<>
+
+            <div className='home'>
+                <h1>Bienvenido a la app de cajero de codiGo</h1>
+                <h2>Realiza todas tus operaciones de manera segura</h2>
+                <button onClick={() => irAlCajero()} >Ir al cajero</button>
+            </div>
+
+            {/* {(currentUser === null) ? (<>
                 <section className="login" id="login">
                     <div className="login__contenedor">
                         <input className="login__contenedor__input" id="label-email-usuario" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -132,7 +148,7 @@ function Home() {
                         </div>
                     </div>
                 </section>
-            )}
+            )} */}
         </>
     );
 }
