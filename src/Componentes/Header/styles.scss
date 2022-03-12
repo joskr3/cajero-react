@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@700&family=Roboto:wght@300;400&display=swap");
+
+$letra: "PT Sans Narrow', sans-serif";
+$color-primario: #5fceb3;
+
+.cabecera {
+    background-color: $color-primario;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    &__cuerpo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &__titulo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: $letra;
+            color: white !important;
+        }
+    }
+}
