@@ -5,11 +5,15 @@ import {
   BrowserRouter
 } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
+import { RecoilRoot } from 'recoil';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <RecoilRoot>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </RecoilRoot>
+  ,
   document.getElementById('root')
 );
 

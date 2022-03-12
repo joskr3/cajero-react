@@ -1,20 +1,23 @@
 import { useState } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { currentUserAtom } from "../../Atoms/User/UserAtom";
 import "./styles.scss"
 
 function Retiro() {
 
-
+  const [currentUser, setCurrentUser] = useRecoilState(currentUserAtom);
   const [montoRetiro, setMontoRetiro] = useState<number>(0);
 
+
   const retirar = () => {
-    // if (montoRetiro <= currentUser!.balance) {
-    //     currentUser!.balance -= montoDeposito;
-    //     setMontoRetiro(0);
-    // }
+    if (montoRetiro <= currentUser!.balance) {
+      currentUser!.balance -= montoRetiro;
+      setMontoRetiro(0);
+    }
   }
 
   const resetear = () => {
-    //setCurrentUser(null);
+    setCurrentUser(null);
   }
 
   return (

@@ -1,16 +1,23 @@
 import { useState } from 'react'
 import "./styles.scss"
 import { arrayUsuarios } from '../../db';
+import { useRecoilState } from 'recoil';
+import { currentUserAtom } from '../../Atoms/User/UserAtom';
+import { IUser } from '../../Interfaces/IUser';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
 
+  const navigate = useNavigate()
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [user, setUser] = useRecoilState<IUser | null>(currentUserAtom);
 
   function iniciarSesion() {
     const userFound = arrayUsuarios.find(user => user.email === email && user.password === password);
-    //setCurrentUser(userFound || null);
-    return userFound
+    setUser(userFound || null);
+    user && navigate("/operaciones")
   }
 
   return (
