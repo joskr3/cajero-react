@@ -1,5 +1,5 @@
 import './App.scss';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { IUser } from './Interfaces/IUser';
 import { arrayUsuarios } from './db';
 
@@ -11,8 +11,8 @@ function App() {
   const [irAlRetiro, setIrAlRetiro] = useState(false);
   const [irAlDeposito, setIrAlDeposito] = useState(false);
   const [irAlConsulta, setIrAlConsulta] = useState(false);
-  const [montoRetiro, setMontoRetiro] = useState<number | null>(null);
-  const [montoDeposito, setMontoDeposito] = useState<number | null>(null);
+  const [montoRetiro, setMontoRetiro] = useState<number>(0);
+  const [montoDeposito, setMontoDeposito] = useState<number>(0);
 
   function irAFuncionDeRetiro(): void {
     setIrAlRetiro(true);
@@ -36,31 +36,17 @@ function App() {
   }
 
   const depositar = () => {
-    arrayUsuarios.forEach(elementoArray => {
-      if (elementoArray.id === currentUser?.id) {
-        if (montoRetiro !== null) {
-          if (montoRetiro <= elementoArray.balance) {
-            elementoArray.balance = elementoArray.balance + (montoDeposito || 0);
-            currentUser.balance = elementoArray.balance;
-            setMontoDeposito(null);
-          }
-        }
-      }
-    })
+    if (montoDeposito > 0) {
+      currentUser!.balance += montoDeposito;
+      setMontoDeposito(0);
+    }
   }
 
   const retirar = () => {
-    arrayUsuarios.forEach(elementoArray => {
-      if (elementoArray.id === currentUser?.id) {
-        if (montoRetiro !== null) {
-          if (montoRetiro <= elementoArray.balance) {
-            elementoArray.balance = elementoArray.balance - montoRetiro;
-            currentUser.balance = elementoArray.balance;
-            setMontoRetiro(null);
-          }
-        }
-      }
-    })
+    if (montoRetiro <= currentUser!.balance) {
+      currentUser!.balance -= montoDeposito;
+      setMontoRetiro(0);
+    }
   }
 
   function iniciarSesion() {
@@ -91,7 +77,7 @@ function App() {
             Login
           </button>
         </section>
-      </>) : (<></>)}
+      </>) : (null)}
       {(currentUser !== null) && (
         <section id="contenedor-info-usuario" className="contenedor-info">
           <div className=" is-centered contenedor-info__centrado">
