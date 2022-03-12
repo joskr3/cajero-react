@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@700&family=Roboto:wght@300;400&display=swap");
+
+$letra: "PT Sans Narrow', sans-serif";
+$color-primario: #5fceb3;
+
+
+.contenedor-operaciones {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & h3 {
+        font-family: $letra;
+        font-size: 1.5rem;
+        color: $color-primario;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    &__boton {
+        margin: 0.5rem;
+        width: 200px;
+        height: 2rem;
+        border: 1px solid $color-primario;
+        border-radius: 3px;
+        background-color: $color-primario;
+        color: white;
+        font-weight: bold;
+        font-family: $letra;
+        font-size: 1rem;
+        padding: 0.25rem;
+        cursor: pointer;
+        transition: 0.3s;
+        &:focus {
+            outline: none;
+            border: none;
+        }
+        &:hover {
+            background-color: #fff;
+            color: $color-primario;
+        }
+
+        // &__retirar {
+        //     background-color: red;
+        //     &:hover {
+        //         background-color: #fff;
+        //         color: red;
+        //     }
+        // }
+        // &__depositar {
+        //     background-color: green;
+        //     &:hover {
+        //         background-color: #fff;
+        //         color: green;
+        //     }
+        // }
+        // &__consultar {
+        //     background-color: blue;
+        //     &:hover {
+        //         background-color: #fff;
+        //         color: blue;
+        //     }
+        // }
+    }
+}

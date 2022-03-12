@@ -11,31 +11,13 @@ function Home() {
 
     const navigate = useNavigate();
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+
     const [currentUser, setCurrentUser] = useState<IUser | null>(null);
-    const [irAlRetiro, setIrAlRetiro] = useState(false);
-    const [irAlDeposito, setIrAlDeposito] = useState(false);
-    const [irAlConsulta, setIrAlConsulta] = useState(false);
+
     const [montoRetiro, setMontoRetiro] = useState<number>(0);
     const [montoDeposito, setMontoDeposito] = useState<number>(0);
 
-    function irAFuncionDeRetiro(): void {
-        setIrAlRetiro(true);
-        setIrAlConsulta(false);
-        setIrAlDeposito(false);
-    }
-    const irAFuncionDeDeposito = () => {
-        setIrAlDeposito(true);
-        setIrAlRetiro(false);
-        setIrAlConsulta(false);
-    }
 
-    const irAFuncionDeConsulta = () => {
-        setIrAlConsulta(true);
-        setIrAlRetiro(false);
-        setIrAlDeposito(false);
-    }
 
     const resetear = () => {
         setCurrentUser(null);
@@ -55,12 +37,7 @@ function Home() {
         }
     }
 
-    function iniciarSesion() {
-        const userFound = arrayUsuarios.find(user => user.email === email && user.password === password);
-        setCurrentUser(userFound || null);
-        return userFound
-    }
-
+  
 
     function irAlCajero() {
         navigate("/login");
