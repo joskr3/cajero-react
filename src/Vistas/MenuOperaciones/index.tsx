@@ -7,14 +7,14 @@ function Menu() {
   const navigate = useNavigate();
 
   function irAFuncionDeRetiro(): void {
-    navigate("/retiro");
+    navigate("/retirar");
   }
   const irAFuncionDeDeposito = () => {
-    navigate("/deposito");
+    navigate("/depositar");
   }
 
   const irAFuncionDeConsulta = () => {
-    navigate("/consulta");
+    navigate("/consultar");
   }
 
   return (

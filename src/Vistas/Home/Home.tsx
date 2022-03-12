@@ -14,28 +14,13 @@ function Home() {
 
     const [currentUser, setCurrentUser] = useState<IUser | null>(null);
 
-    const [montoRetiro, setMontoRetiro] = useState<number>(0);
-    const [montoDeposito, setMontoDeposito] = useState<number>(0);
-
 
 
     const resetear = () => {
         setCurrentUser(null);
     }
 
-    const depositar = () => {
-        if (montoDeposito > 0) {
-            currentUser!.balance += montoDeposito;
-            setMontoDeposito(0);
-        }
-    }
 
-    const retirar = () => {
-        if (montoRetiro <= currentUser!.balance) {
-            currentUser!.balance -= montoDeposito;
-            setMontoRetiro(0);
-        }
-    }
 
   
 
